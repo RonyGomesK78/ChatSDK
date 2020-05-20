@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "674490161692",
+    "firebase_url": "https://firestream01.firebaseio.com",
+    "project_id": "firestream01",
+    "storage_bucket": "firestream01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674490161692:android:1ccb57ff5c20f4ef635dd9",
+        "android_client_info": {
+          "package_name": "co.chatsdk.android.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674490161692-ol8cif32q6ohp7qpk9lntc7hne147d8f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEwJvP5c56IocpLsw9rPA7cMvnVRS1EGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674490161692-ol8cif32q6ohp7qpk9lntc7hne147d8f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
