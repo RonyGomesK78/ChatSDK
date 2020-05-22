@@ -45,7 +45,7 @@ import sdk.chat.test.DummyData;
 /**
  * Created by Ben Smiley on 6/8/2014.
  */
-public class MainApplication extends MultiDexApplication {
+public class MainApplication extends Application {
 
     @Override
     public void onCreate() {
@@ -54,15 +54,6 @@ public class MainApplication extends MultiDexApplication {
        String rootPath = "micro_test_tester03";
        // TestScript.run(this,rootPath);
         try {
-            Configuration config = new Configuration.Builder()
-                    .firebaseRootPath(rootPath)
-                    .build();
-
-            config.defaultNamePrefix = "Your name";
-            config.defaultName = "Name";
-            config.anonymousLoginEnabled = false;
-
-             FireStream configuration;
 
             Config firestreamConfig = new Config();
             try {
@@ -78,18 +69,8 @@ public class MainApplication extends MultiDexApplication {
 
             Fire.stream().initialize(this, firestreamConfig);
            // ChatSDK.initialize(this, config, FireStreamNetworkAdapter.class, BaseInterfaceAdapter.class);
-            Disposable d = Fire.stream().getSendableEvents().getMessages().subscribe(messageEvent -> {
-                if(messageEvent.typeIs(EventType.Added)){
-                    System.out.println(messageEvent.get().toTextMessage().getText());
-                }
-            });
-            // Old Firebase Adapter
-            //ChatSDK.initialize(this, config, FirebaseNetworkAdapter.class, BaseInterfaceAdapter.class);
 
             Logger.getConfiguration().level(Level.DEBUG).activate();
-//            TestScript.run(context, config.firebaseRootPath);
-
-//            new DummyData(200, 50);
 
 
         }
@@ -97,72 +78,7 @@ public class MainApplication extends MultiDexApplication {
             e.printStackTrace();
             Logger.debug("Error");
         }
-        finally {
-//            ChatSDK.ui().setMainActivity(MainDrawActivity.class);
-
-           // ChatSDK.ui().setAvatarGenerator(new GravatarAvatarGenerator());
-//            ChatSDK.ui().setLoginActivity(LoginActivity.class);
-
-     //       FirebaseFileStorageModule.activate();
-       //     FirebasePushModule.activate();
-         //   ProfilePicturesModule.activate();
-//            FirebaseUIModule.activate(EmailAuthProvider.PROVIDER_ID, PhoneAuthProvider.PROVIDER_ID);
-
-//            new DummyData(1, 1000);
-
-
-
-            // Uncomment this to enable Firebase UI
-            //FirebaseUIModule.activate(EmailAuthProvider.PROVIDER_ID, PhoneAuthProvider.PROVIDER_ID);
-
-//            ChatSDK.ui().addChatOption(new MessageTestChatOption("BaseMessage Burst"));
-
-        }
-
-        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
-            @Override
-            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-
-            }
-
-            @Override
-            public void onActivityStarted(Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityResumed(Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityPaused(Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityStopped(Activity activity) {
-
-            }
-
-            @Override
-            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-
-            }
-
-            @Override
-            public void onActivityDestroyed(Activity activity) {
-
-            }
-        });
 
     }
-
-    @Override
-    protected void attachBaseContext (Context base) {
-        super.attachBaseContext(base);
-        MultiDex.install(this);
-    }
-
 
 }

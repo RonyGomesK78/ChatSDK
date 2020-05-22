@@ -1,5 +1,6 @@
 package sdk.chat;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +27,9 @@ import java.util.List;
 import java.util.Map;
 
 import co.chatsdk.android.app.R;
+import firestream.chat.events.EventType;
 import firestream.chat.namespace.Fire;
+import io.reactivex.disposables.Disposable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,6 +76,13 @@ public class MainActivity extends AppCompatActivity {
             }
 
         };
+
+        Disposable d = Fire.stream().getSendableEvents().getMessages().subscribe(messageEvent -> {
+            if(messageEvent.typeIs(EventType.Added)){
+                new AlertDialog.Builder(this).setTitle("New Message").setMessage(messageEvent.get().toTextMessage().getText()).show();
+            }
+        });
+
     }
 
     @Override
